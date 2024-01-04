@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if current_user.present? %>
+      Giris Yapildi
+      <%= yield %>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
