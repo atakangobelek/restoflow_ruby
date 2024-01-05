@@ -1,0 +1,5 @@
+<%= form_with model: @order, url: company_orders_path(current_user.company_id), method: :post do |form| %>
+  <%= form.label :masa, "Masa:" %>
+  <%= form.text_field :table %>
+  <%= form.submit "Kaydet" %>
+<% end %>

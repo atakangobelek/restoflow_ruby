@@ -1,0 +1,8 @@
+Siparisler
+<br>
+  <%= link_to "Yeni Siparis Ekle", new_company_order_path(current_user.company_id)%>
+<br>
+<% @orders.each do |order| %>
+  Masa: <%= order.table %>
+  Kullanici: <%= order&.user&.name %> <br>
+<% end %>

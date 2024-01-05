@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_02_113250) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_04_095936) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.integer "user_id"
+    t.string "table", null: false
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_orders_on_company_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -37,6 +47,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_113250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "company_id", null: false
+    t.string "name", null: false
+    t.string "surname", null: false
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -50,5 +62,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_113250) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "orders", "companies"
   add_foreign_key "users", "companies"
 end
