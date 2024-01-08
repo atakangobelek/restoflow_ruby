@@ -1,0 +1,7 @@
+<%= form_with model: @order, url: company_order_path(current_user.company_id, @order.id), method: :patch do |form| %>
+  <%= form.label :masa, "Masa:" %>
+  <%= form.text_field :table %>
+  <%= form.label :kullanici, "Kullanıcı:" %>
+  <%= form.text_field :user_id %>
+  <%= form.submit "Kaydet" %>
+<% end %>
