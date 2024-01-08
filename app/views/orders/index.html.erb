@@ -2,6 +2,9 @@ Siparisler
 <br>
   <%= link_to "Yeni Siparis Ekle", new_company_order_path(current_user.company_id)%>
 <br>
+<br>
+  <%= link_to "Yemek Olustur", new_company_product_path(current_user.company_id)%>
+  <br>
 <% @orders.each do |order| %>
   Masa: <%= order.table %>
   Kullanici: <%= order&.user&.name %> <br>

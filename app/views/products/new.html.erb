@@ -1,0 +1,7 @@
+<%= form_with model: @product, url: company_products_path(current_user.company_id), method: :post do |form| %>
+  <%= form.label :yemek, "Yemek Ismi:" %>
+  <%= form.text_field :name %>
+  <%= form.label :fiyat, "Fiyat:" %>
+  <%= form.text_field :price %>
+  <%= form.submit "Kaydet" %>
+<% end %>
