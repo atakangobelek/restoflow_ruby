@@ -10,6 +10,6 @@ class Order < ApplicationRecord
     state :taken, initial: true
   end
 
-  scope :list, ->(company_id) { where(company_id: company_id )}
+  scope :list, ->(company_id) { where(company_id: company_id )} 
 
 end

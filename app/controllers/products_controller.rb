@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
     def new
         @product = Product.new
+        @categories = Category.list(current_user.company_id)
     end
 
     def create
@@ -21,7 +22,7 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-        params.require(:product).permit(:name, :price)
+        params.require(:product).permit(:name, :price, :category_id)
     end
 
 

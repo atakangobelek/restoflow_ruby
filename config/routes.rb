@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :company do
     resources :orders
     resources :products
+    resources :categories
   end
 end
