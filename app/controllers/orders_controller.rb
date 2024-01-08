@@ -20,8 +20,25 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+    @company = Company.find(params[:company_id])
+    @order = @company.orders.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:company_id])
+    @order = @company.orders.find(params[:id])
+    
+    if @order.update(order_params)
+      basarili
+    else
+      hata mesaji
+    end
+  end
+  
+
   private
   def order_params
-    params.require(:order).permit(:table)
+    params.require(:order).permit(:table, :user_id)
   end
 end
