@@ -1,0 +1,5 @@
+<%= form_with model: @category, url: company_categories_path(current_user.company_id), method: :post do |form| %>
+  <%= form.label :kategori, "kategori:" %>
+  <%= form.text_field :name %>
+  <%= form.submit "Kaydet" %>
+<% end %>
