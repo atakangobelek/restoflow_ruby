@@ -1,0 +1,13 @@
+<%= link_to "Yemek Olustur", new_company_product_path(current_user.company_id)%>
+<br>
+<br>
+Urunler
+<br>
+<% @products.each do |product|%>
+ <br>
+ Urun ismi: <%=product.name%>,
+ Fiyat: <%=product.price%>
+ <br>
+ <%= link_to "Yemegi Guncelle", edit_company_product_path(current_user.company_id, product.id)%>
+ <br>
+<%end%>

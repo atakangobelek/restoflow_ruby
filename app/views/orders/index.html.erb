@@ -5,13 +5,9 @@ Siparisler
 <br>
   <%= link_to "Kategori Olustur", new_company_category_path(current_user.company_id)%>
 <br>
-<br>
-  <%= link_to "Yemek Olustur", new_company_product_path(current_user.company_id)%>
-<br>
 <% @orders.each do |order| %>
   Masa: <%= order.table %>
   Kullanici: <%= order&.user&.name %> <br>
-  <br>
-  <%= link_to "Siparisi guncelle", edit_company_order_path(current_user.company_id,order.id)%>
+  <%= link_to "Siparisi guncelle", edit_company_order_path(current_user.company_id, order.id) %>
   <br>
 <% end %>
