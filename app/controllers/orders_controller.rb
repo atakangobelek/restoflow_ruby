@@ -27,10 +27,11 @@ class OrdersController < ApplicationController
 
   def update
     @company = Company.find(params[:company_id])
+    
     @order = @company.orders.find(params[:id])
     
     if @order.update(order_params)
-      basarili
+      
     else
       hata mesaji
     end

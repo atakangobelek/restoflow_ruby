@@ -1,0 +1,9 @@
+<%= form_with model: @product, url: company_products_path(current_user.company_id), method: :post do |form| %>
+  <%= form.label :yemek, "Yemek Ismi:" %>
+  <%= form.text_field :name %>
+  <%= form.label :fiyat, "Fiyat:" %>
+  <%= form.text_field :price %>
+  <%= form.label :category_id, "Kategori:" %>
+  <%= form.select :category_id, @categories.collect{ |p| [p.name, p.id]}, {prompt: "Kategori sec"}%>
+  <%= form.submit "Kaydet" %>
+<% end %>
