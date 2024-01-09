@@ -1,0 +1,11 @@
+<%= link_to "Kategori olustur", new_company_category_path(current_user.company_id)%>
+<br>
+<br>
+Kategoriler
+<br>
+<%@categories.each do |category| %>
+<br>
+ Kategori ismi:<%=category.name%>
+ <br>
+ <%= link_to "Kategoriyi guncelle", edit_company_category_path(current_user.company_id, category.id)%>
+ <%end%>

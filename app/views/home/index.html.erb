@@ -1,8 +1,19 @@
-selam
 
 
-<%= link_to "Giris Yap", new_user_session_path %>
+
+<%
+=begin%>
+ <%= link_to "Giris Yap", new_user_session_path %> 
+<%
+=end%>
 
 <% if current_user.present? %>
-  <%= link_to "Siparisler", company_orders_path(current_user.company_id) %>
+  <%= link_to "Siparisler", company_orders_path(current_user.company_id) %>    
+  <br>
+  <br>                   
+  <%= link_to "Yemek katalogu", company_products_path(current_user.company_id)%>
+  <br>
+  <br>
+  <%= link_to "Kategoriler", company_categories_path(current_user.company_id)%>
+  <br>
 <% end %>

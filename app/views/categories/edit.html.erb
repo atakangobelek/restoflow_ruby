@@ -1,0 +1,6 @@
+<%= form_with model: @category, url: company_category_path(current_user.company_id, @category.id), method: :patch do |form| %>
+<br>
+<%= form.label :kategori, "kategori:" %>
+<%= form.text_field :name %>
+<%= form.submit "Kaydet"%>
+<%end%>
