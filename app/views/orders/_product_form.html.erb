@@ -1,0 +1,8 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <%= f.label :name, "Urun:"%>
+  <%= f.select :product_id, @products.collect{ |p| [p.name, p.id]}, {prompt:"Urun sec"}%> 
+
+  <button type="button" data-action="nested-form#remove">Remove todo</button>
+
+  <%= f.hidden_field :_destroy %>
+</div>
