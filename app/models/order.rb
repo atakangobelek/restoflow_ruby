@@ -14,7 +14,17 @@ class Order < ApplicationRecord
 
   aasm :column => 'state' do
     state :taken, initial: true
+    state :canceled
+
+    event :cancel do
+      transitions from: :taken, to: :canceled
+    end
+
   end
+
+  
+
+
 
   scope :list, ->(company_id) { where(company_id: company_id )} 
 

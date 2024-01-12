@@ -39,10 +39,22 @@ class OrdersController < ApplicationController
       hata mesaji
     end
   end
+
+  def close_edit
+    @order = Order.find(params[:id])
+  end
+
+  def close_order_update
+    @order = Order.find(params[:id])
+    if @order.cancel!
+      @order.update(order_params)
+    else
+    end
+  end
   
 
   private
   def order_params
-    params.require(:order).permit(:table, :user_id,  order_products_attributes: [:id, :_destroy, :product_id])
+    params.require(:order).permit(:table, :user_id, :note, order_products_attributes: [:id, :_destroy, :product_id])
   end
 end

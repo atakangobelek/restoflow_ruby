@@ -1,0 +1,5 @@
+<%= form_with model: @order, url: close_order_update_company_order_path(current_user.company_id, @order.id), method: :patch do |form| %>
+  <%= form.label :note, "Not:" %>
+  <%= form.text_field :note %>  
+  <%= form.submit "Kaydet" %>
+<% end %>

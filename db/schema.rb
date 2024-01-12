@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_11_122041) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_183520) do
   create_table "accounts", force: :cascade do |t|
     t.integer "order_id", null: false
     t.string "state"
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_122041) do
     t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "account_id", null: false
+    t.integer "account_id"
     t.index ["account_id"], name: "index_order_products_on_account_id"
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_122041) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "note"
     t.index ["company_id"], name: "index_orders_on_company_id"
   end
 
