@@ -1,5 +1,20 @@
-<%= form_with model: @order, url: company_orders_path(current_user.company_id), method: :post do |form| %>
-  <%= form.label :masa, "Masa:" %>
-  <%= form.text_field :table %>
-  <%= form.submit "Kaydet" %>
+<%= form_with model: @order, url: company_orders_path(current_user.company_id), data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
+  <%= f.label :masa, "masa girin"%>
+  <%= f.text_field :table%>
+  <template data-nested-form-target="template">
+    <%= f.fields_for :order_products, OrderProduct.new, child_index: 'NEW_RECORD' do |todo_fields| %>
+      <%= render "product_form", f: todo_fields %>
+    <% end %>
+  </template>
+
+  <%= f.fields_for :order_products do |product_fields| %>
+    <%= render "product_form", f: product_fields %>
+  <% end %>
+
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <button type="button" data-action="nested-form#add">Urun ekle</button>
+
+  <%= f.submit 'Urunu kaydet' %>
 <% end %>

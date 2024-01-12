@@ -6,6 +6,9 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.order_products.build   #viewmdan gelen sembol :order_products burada order icerisine build ediliyor, sonra model icerisindeki -> through: :order_products methoduyla order_products modeline yaziliyor
+                                  #Build order icerisinde bir order_products objesi olusturmaya yarar
+    @products = Product.list(current_user.company)
   end
 
   def create
@@ -40,6 +43,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:table, :user_id)
+    params.require(:order).permit(:table, :user_id,  order_products_attributes: [:id, :_destroy, :product_id])
   end
 end
