@@ -1,11 +1,9 @@
 
 
 
-<%
-=begin%>
+
  <%= link_to "Giris Yap", new_user_session_path %> 
-<%
-=end%>
+
 
 <% if current_user.present? %>
   <%= link_to "Siparisler", company_orders_path(current_user.company_id) %>    

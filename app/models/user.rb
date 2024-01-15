@@ -8,6 +8,13 @@ class User < ApplicationRecord
 
   after_create :assign_default_role
 
+  enum role: [:admin, :waiter, :kitchen, :till]
+  after_initialize :set_default_role, if: :new_record?
+
+  def set_default_role
+    self.role ||= :user
+  end
+
   def assign_default_role
     self.add_role(:admin, self.company) if self.roles.blank?
   end
