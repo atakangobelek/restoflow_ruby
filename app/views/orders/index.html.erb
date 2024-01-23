@@ -1,14 +1,9 @@
-Siparisler
-<br>
-  <%= link_to "Yeni Siparis Ekle", new_company_order_path(current_user.company_id)%>
-<br>
-<br>
-  <%= link_to "Kategori Olustur", new_company_category_path(current_user.company_id)%>
-<br>
-<% @orders.each do |order| %>
-  Masa: <%= order.table %>
-  Kullanici: <%= order&.user&.name %> <br>
-  <%= link_to "Siparisi guncelle", edit_company_order_path(current_user.company_id, order.id) %>
-  <%= link_to "Siparisi sil", close_edit_company_order_path(current_user.company_id, order.id) %>
-  <br>
-<% end %>
+
+
+<h3>Users Grid</h3>
+
+<div class="left">
+
+  <%= datagrid_table(@users_grid) %>
+  
+</div>
