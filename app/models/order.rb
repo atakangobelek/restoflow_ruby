@@ -3,6 +3,9 @@ class Order < ApplicationRecord
 
   belongs_to :company
   belongs_to :user, optional: true
+  
+  has_many :accounts
+
   has_many :order_products
   has_many :products, through: :order_products
   accepts_nested_attributes_for :order_products, reject_if: :all_blank, allow_destroy: true
@@ -11,7 +14,17 @@ class Order < ApplicationRecord
 
   aasm :column => 'state' do
     state :taken, initial: true
+    state :canceled
+
+    event :cancel do
+      transitions from: :taken, to: :canceled
+    end
+
   end
+
+  
+
+
 
   scope :list, ->(company_id) { where(company_id: company_id )} 
 

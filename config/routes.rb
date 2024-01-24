@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :company do
-    resources :orders
+    resources :orders do
+      member do
+        get "close_edit"
+        patch "close_order_update"
+      end
+    end
     resources :products
     resources :categories
   end

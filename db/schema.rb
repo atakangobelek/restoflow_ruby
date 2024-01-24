@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_10_093640) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_183520) do
+  create_table "accounts", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_accounts_on_order_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -30,6 +38,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_093640) do
     t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_order_products_on_account_id"
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
@@ -41,6 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_093640) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "note"
     t.index ["company_id"], name: "index_orders_on_company_id"
   end
 
@@ -90,7 +101,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_093640) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "accounts", "orders"
   add_foreign_key "categories", "companies"
+  add_foreign_key "order_products", "accounts"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "companies"
