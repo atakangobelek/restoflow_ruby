@@ -1,8 +1,14 @@
 class OrdersController < ApplicationController
 
+
   def index
     @orders = Order.list(current_user.company_id)
+    @users_grid = OrdersGrid.new() do |scope|
+      @orders
+    end
   end
+
+
 
   def new
     @order = Order.new
